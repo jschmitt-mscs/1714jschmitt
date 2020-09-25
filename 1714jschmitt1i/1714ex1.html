@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+      color: #006060;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #303030;
+    }
+
+      body > ul > li {
+        margin-top: 1em;
+      }
+
+      body > ol > li {
+        margin-top: 0.75em;
+      }
+
+    ol ol {
+      list-style-type: lower-alpha;
+    }
+
+      ol ol ol {
+        list-style-type: lower-roman;
+      }
+
+        ol ol ol ol {
+          list-style-type: lower-greek;
+        }
+
+    p {
+      margin-left: 1em;
+    }
+
+    li img {
+      vertical-align: text-top;
+      display: inline-block;
+    }
+
+    .twocols {
+      -webkit-columns: 100px 2; /* Chrome, Safari, Opera */
+      -moz-columns: 100px 2; /* Firefox */
+      columns: 100px 2;
+    }
+
+    div.twocols > ol {
+      margin-top: 0px;
+    }
+
+      div.twocols > ol > li {
+        margin-bottom: .75em;
+      }
+  </style>
+</head>
+<body>
+<h3>Joseph Schmitt COMC1714 </h3>
+    <p>Excercise 1I</p>
+    <p>As a vegetable gardener, I want to learn how to preserve my food</p>
+    <p>As a vegetable gardener, I want to share my methods of preserving food</p>
+    <p>As a vegetable gardener, I want to see how fermentation affects food over time</p>
+    <p>As a potential gardener, I want to know what vegetables ferment best</p>
+    <p>&nbsp;</p>
+<h3>COMC1714 Entities Worksheet</h3>
+<p>&nbsp;</p>
+<div style="margin-left: 1em;">
+<h4>Business transactions:</h4>
+<p>&nbsp;</p>
+<h4>Transaction line items:</h4>
+<p>&nbsp;</p>
+<h4>Product or service related to a transaction:</h4>
+<p>&nbsp;</p>
+<h4>Roles of people:</h4>
+<p>Gardener(GardenerID, personID)</p>
+<h4>Place of transaction or service:</h4>
+<p>&nbsp;</p>
+<h4>Noteworth events:</h4>
+<p>&nbsp;</p>
+<h4>Physical objects:</h4>
+    <p>Person(PersonID, firstName, lastName, emailAddress)</p>
+    <p>Recipe(RecipeID, AuthorID, RecipeName, RecipeDescription, CreationDate)\</p>
+    <p>RecipeReview(ReviewID, CommentID, RecipeID, RecipeRating)</p>
+    <p>Comment(CommentID, PersonID, CommentTitle, CommentText)</p>
+    <p>RecipeStep(StepID, RecipeID, StepTitle,StepDescription)</p>
+    <p>UofM(UofMID, UofMDescription)</p>
+    <p>Ingredients(IngredientID, IngredientDescription, IngredientAmount, UofMID)</p>
+    <p>RecipeIngredients(RecipeIngredientID, IngredientID, StepID)</p>
+<h4>Locations:</h4>
+<h4>&nbsp;</h4>
+    <h4>Descriptions of things (text, unit of measurement, time period, etc.):</h4>
+<p>PHLog(LogID, RecipeID, Date, pHReading, CommentID)</p>
+<h4>Catalogs:</h4>
+<p>&nbsp;</p>
+<h4>Containers of other things:</h4>
+    <p>&nbsp;</p>
+<h4>Things in a container:</h4>
+</div>
+    <p>&nbsp;</p>
+</body>
+</html>
