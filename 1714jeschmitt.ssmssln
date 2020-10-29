@@ -15,6 +15,8 @@ Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "1714jschmittex2D", "1714jsc
 EndProject
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "1714jschmittex2e", "1714jschmittex2e\1714jschmittex2e.ssmssqlproj", "{034BE4A9-98EE-4811-A29E-8CFE8725319E}"
 EndProject
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "1714jschmitt2f2", "1714jschmitt2f2\1714jschmitt2f2.ssmssqlproj", "{61C5CB53-105D-46F7-9DCC-6F6071BB22A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
@@ -25,8 +27,9 @@ Global
 		{6DA6FF4A-159F-4D86-9AD7-18F1E3E82EDD}.Default|Default.ActiveCfg = Default
 		{BE40F6D8-22A8-486F-B1AC-5A3C9BB5E225}.Default|Default.ActiveCfg = Default
 		{28B4978D-434A-41C2-A7BD-CA8FF863353E}.Default|Default.ActiveCfg = Default
-		{3BC1AFCD-5B8C-47CA-88F9-5D6D85DA00F4}.Default|Default.ActiveCfg = Default
 		{034BE4A9-98EE-4811-A29E-8CFE8725319E}.Default|Default.ActiveCfg = Default
+		{F6D414BF-3EA4-4082-BE21-A21D85BFA3D0}.Default|Default.ActiveCfg = Default
+		{61C5CB53-105D-46F7-9DCC-6F6071BB22A6}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
