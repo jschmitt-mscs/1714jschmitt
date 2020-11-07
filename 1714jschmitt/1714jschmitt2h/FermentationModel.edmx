@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Person" EntityType="Model1.Store.Person" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recipes" EntityType="Model1.Store.Recipes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="Model1.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UofMs" EntityType="Model1.Store.UofMs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecipeReviews" EntityType="Model1.Store.RecipeReviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecipeSteps" EntityType="Model1.Store.RecipeSteps" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ingredients1" EntityType="Model1.Store.Ingredients1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecipeIngredients" EntityType="Model1.Store.RecipeIngredients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhLogs" EntityType="Model1.Store.PhLogs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PersonComment" Association="Model1.Store.PersonComment">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="PersonRecipe" Association="Model1.Store.PersonRecipe">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Recipe" EntitySet="Recipes" />
+    </AssociationSet>
+    <AssociationSet Name="CommentRecipeReview" Association="Model1.Store.CommentRecipeReview">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="RecipeReview" EntitySet="RecipeReviews" />
+    </AssociationSet>
+    <AssociationSet Name="RecipeRecipeReview" Association="Model1.Store.RecipeRecipeReview">
+      <End Role="Recipe" EntitySet="Recipes" />
+      <End Role="RecipeReview" EntitySet="RecipeReviews" />
+    </AssociationSet>
+    <AssociationSet Name="RecipeRecipeStep" Association="Model1.Store.RecipeRecipeStep">
+      <End Role="Recipe" EntitySet="Recipes" />
+      <End Role="RecipeStep" EntitySet="RecipeSteps" />
+    </AssociationSet>
+    <AssociationSet Name="UofMIngredient" Association="Model1.Store.UofMIngredient">
+      <End Role="UofM" EntitySet="UofMs" />
+      <End Role="Ingredient" EntitySet="Ingredients1" />
+    </AssociationSet>
+    <AssociationSet Name="RecipeStepRecipeIngredients" Association="Model1.Store.RecipeStepRecipeIngredients">
+      <End Role="RecipeStep" EntitySet="RecipeSteps" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="IngredientRecipeIngredients" Association="Model1.Store.IngredientRecipeIngredients">
+      <End Role="Ingredient" EntitySet="Ingredients1" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="RecipePhLog" Association="Model1.Store.RecipePhLog">
+      <End Role="Recipe" EntitySet="Recipes" />
+      <End Role="PhLog" EntitySet="PhLogs" />
+    </AssociationSet>
+    <AssociationSet Name="CommentPhLog" Association="Model1.Store.CommentPhLog">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="PhLog" EntitySet="PhLogs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecipeName" Type="nvarchar" Nullable="false" MaxLength="75" />
+    <Property Name="RecipeDescription" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentTitle" Type="nvarchar" Nullable="false" MaxLength="75" />
+    <Property Name="CommentText" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="CommentDate" Type="datetime" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UofMs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UofMDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipeReviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecipeRating" Type="int" Nullable="false" />
+    <Property Name="Comment_Id" Type="int" Nullable="false" />
+    <Property Name="Recipe_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipeSteps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StepTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StepDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Recipe_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredients1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IngredientAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UofM_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipeIngredients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecipeStep_Id" Type="int" Nullable="false" />
+    <Property Name="Ingredient_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phReading" Type="decimal" Nullable="false" />
+    <Property Name="Recipe_Id" Type="int" Nullable="false" />
+    <Property Name="Comment_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PersonComment">
+    <End Role="Person" Type="Model1.Store.Person" Multiplicity="1" />
+    <End Role="Comment" Type="Model1.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonRecipe">
+    <End Role="Person" Type="Model1.Store.Person" Multiplicity="1" />
+    <End Role="Recipe" Type="Model1.Store.Recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recipe">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentRecipeReview">
+    <End Role="Comment" Type="Model1.Store.Comments" Multiplicity="1" />
+    <End Role="RecipeReview" Type="Model1.Store.RecipeReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecipeReview">
+        <PropertyRef Name="Comment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RecipeRecipeReview">
+    <End Role="Recipe" Type="Model1.Store.Recipes" Multiplicity="1" />
+    <End Role="RecipeReview" Type="Model1.Store.RecipeReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecipeReview">
+        <PropertyRef Name="Recipe_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RecipeRecipeStep">
+    <End Role="Recipe" Type="Model1.Store.Recipes" Multiplicity="1" />
+    <End Role="RecipeStep" Type="Model1.Store.RecipeSteps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecipeStep">
+        <PropertyRef Name="Recipe_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UofMIngredient">
+    <End Role="UofM" Type="Model1.Store.UofMs" Multiplicity="1" />
+    <End Role="Ingredient" Type="Model1.Store.Ingredients1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UofM">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingredient">
+        <PropertyRef Name="UofM_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RecipeStepRecipeIngredients">
+    <End Role="RecipeStep" Type="Model1.Store.RecipeSteps" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Model1.Store.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RecipeStep">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="RecipeStep_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IngredientRecipeIngredients">
+    <End Role="Ingredient" Type="Model1.Store.Ingredients1" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Model1.Store.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="Ingredient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RecipePhLog">
+    <End Role="Recipe" Type="Model1.Store.Recipes" Multiplicity="1" />
+    <End Role="PhLog" Type="Model1.Store.PhLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhLog">
+        <PropertyRef Name="Recipe_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentPhLog">
+    <End Role="Comment" Type="Model1.Store.Comments" Multiplicity="1" />
+    <End Role="PhLog" Type="Model1.Store.PhLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhLog">
+        <PropertyRef Name="Comment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Person" EntityType="Model1.Person" />
+          <EntitySet Name="Recipes" EntityType="Model1.Recipe" />
+          <EntitySet Name="Comments" EntityType="Model1.Comment" />
+          <AssociationSet Name="PersonComment" Association="Model1.PersonComment">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="PersonRecipe" Association="Model1.PersonRecipe">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <EntitySet Name="UofMs" EntityType="Model1.UofM" />
+          <EntitySet Name="RecipeReviews" EntityType="Model1.RecipeReview" />
+          <AssociationSet Name="CommentRecipeReview" Association="Model1.CommentRecipeReview">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="RecipeReview" EntitySet="RecipeReviews" />
+          </AssociationSet>
+          <AssociationSet Name="RecipeRecipeReview" Association="Model1.RecipeRecipeReview">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeReview" EntitySet="RecipeReviews" />
+          </AssociationSet>
+          <EntitySet Name="RecipeSteps" EntityType="Model1.RecipeStep" />
+          <AssociationSet Name="RecipeRecipeStep" Association="Model1.RecipeRecipeStep">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeStep" EntitySet="RecipeSteps" />
+          </AssociationSet>
+          <EntitySet Name="Ingredients1" EntityType="Model1.Ingredient" />
+          <AssociationSet Name="UofMIngredient" Association="Model1.UofMIngredient">
+            <End Role="UofM" EntitySet="UofMs" />
+            <End Role="Ingredient" EntitySet="Ingredients1" />
+          </AssociationSet>
+          <EntitySet Name="RecipeIngredients" EntityType="Model1.RecipeIngredients" />
+          <AssociationSet Name="RecipeStepRecipeIngredients" Association="Model1.RecipeStepRecipeIngredients">
+            <End Role="RecipeStep" EntitySet="RecipeSteps" />
+            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="IngredientRecipeIngredients" Association="Model1.IngredientRecipeIngredients">
+            <End Role="Ingredient" EntitySet="Ingredients1" />
+            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <EntitySet Name="PhLogs" EntityType="Model1.PhLog" />
+          <AssociationSet Name="RecipePhLog" Association="Model1.RecipePhLog">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="PhLog" EntitySet="PhLogs" />
+          </AssociationSet>
+          <AssociationSet Name="CommentPhLog" Association="Model1.CommentPhLog">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="PhLog" EntitySet="PhLogs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="25" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Model1.PersonComment" FromRole="Person" ToRole="Comment" />
+          <NavigationProperty Name="Recipes" Relationship="Model1.PersonRecipe" FromRole="Person" ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecipeName" Type="String" Nullable="false" MaxLength="75" />
+          <Property Name="RecipeDescription" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonRecipe" FromRole="Recipe" ToRole="Person" />
+          <NavigationProperty Name="RecipeReviews" Relationship="Model1.RecipeRecipeReview" FromRole="Recipe" ToRole="RecipeReview" />
+          <NavigationProperty Name="RecipeSteps" Relationship="Model1.RecipeRecipeStep" FromRole="Recipe" ToRole="RecipeStep" />
+          <NavigationProperty Name="PhLogs" Relationship="Model1.RecipePhLog" FromRole="Recipe" ToRole="PhLog" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentTitle" Type="String" Nullable="false" MaxLength="75" />
+          <Property Name="CommentText" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonComment" FromRole="Comment" ToRole="Person" />
+          <NavigationProperty Name="RecipeReviews" Relationship="Model1.CommentRecipeReview" FromRole="Comment" ToRole="RecipeReview" />
+          <NavigationProperty Name="PhLogs" Relationship="Model1.CommentPhLog" FromRole="Comment" ToRole="PhLog" />
+        </EntityType>
+        <Association Name="PersonComment">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonRecipe">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.Recipe" Role="Recipe" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UofM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UofMDescription" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ingredients" Relationship="Model1.UofMIngredient" FromRole="UofM" ToRole="Ingredient" />
+        </EntityType>
+        <EntityType Name="RecipeReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecipeRating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Model1.CommentRecipeReview" FromRole="RecipeReview" ToRole="Comment" />
+          <NavigationProperty Name="Recipe" Relationship="Model1.RecipeRecipeReview" FromRole="RecipeReview" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="CommentRecipeReview">
+          <End Type="Model1.Comment" Role="Comment" Multiplicity="1" />
+          <End Type="Model1.RecipeReview" Role="RecipeReview" Multiplicity="*" />
+        </Association>
+        <Association Name="RecipeRecipeReview">
+          <End Type="Model1.Recipe" Role="Recipe" Multiplicity="1" />
+          <End Type="Model1.RecipeReview" Role="RecipeReview" Multiplicity="*" />
+        </Association>
+        <EntityType Name="RecipeStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StepTitle" Type="String" Nullable="false" />
+          <Property Name="StepDescription" Type="String" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model1.RecipeRecipeStep" FromRole="RecipeStep" ToRole="Recipe" />
+          <NavigationProperty Name="RecipeIngredients" Relationship="Model1.RecipeStepRecipeIngredients" FromRole="RecipeStep" ToRole="RecipeIngredients" />
+        </EntityType>
+        <Association Name="RecipeRecipeStep">
+          <End Type="Model1.Recipe" Role="Recipe" Multiplicity="1" />
+          <End Type="Model1.RecipeStep" Role="RecipeStep" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IngredientDescription" Type="String" Nullable="false" />
+          <Property Name="IngredientAmount" Type="String" Nullable="false" />
+          <NavigationProperty Name="UofM" Relationship="Model1.UofMIngredient" FromRole="Ingredient" ToRole="UofM" />
+          <NavigationProperty Name="RecipeIngredients" Relationship="Model1.IngredientRecipeIngredients" FromRole="Ingredient" ToRole="RecipeIngredients" />
+        </EntityType>
+        <Association Name="UofMIngredient">
+          <End Type="Model1.UofM" Role="UofM" Multiplicity="1" />
+          <End Type="Model1.Ingredient" Role="Ingredient" Multiplicity="*" />
+        </Association>
+        <EntityType Name="RecipeIngredients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RecipeStep" Relationship="Model1.RecipeStepRecipeIngredients" FromRole="RecipeIngredients" ToRole="RecipeStep" />
+          <NavigationProperty Name="Ingredient" Relationship="Model1.IngredientRecipeIngredients" FromRole="RecipeIngredients" ToRole="Ingredient" />
+        </EntityType>
+        <Association Name="RecipeStepRecipeIngredients">
+          <End Type="Model1.RecipeStep" Role="RecipeStep" Multiplicity="1" />
+          <End Type="Model1.RecipeIngredients" Role="RecipeIngredients" Multiplicity="*" />
+        </Association>
+        <Association Name="IngredientRecipeIngredients">
+          <End Type="Model1.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="Model1.RecipeIngredients" Role="RecipeIngredients" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PhLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phReading" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model1.RecipePhLog" FromRole="PhLog" ToRole="Recipe" />
+          <NavigationProperty Name="Comment" Relationship="Model1.CommentPhLog" FromRole="PhLog" ToRole="Comment" />
+        </EntityType>
+        <Association Name="RecipePhLog">
+          <End Type="Model1.Recipe" Role="Recipe" Multiplicity="1" />
+          <End Type="Model1.PhLog" Role="PhLog" Multiplicity="*" />
+        </Association>
+        <Association Name="CommentPhLog">
+          <End Type="Model1.Comment" Role="Comment" Multiplicity="1" />
+          <End Type="Model1.PhLog" Role="PhLog" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Person">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Person)">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Recipe)">
+        <MappingFragment StoreEntitySet="Recipes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+          <ScalarProperty Name="RecipeDescription" ColumnName="RecipeDescription" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommentTitle" ColumnName="CommentTitle" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UofMs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.UofM)">
+        <MappingFragment StoreEntitySet="UofMs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UofMDescription" ColumnName="UofMDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecipeReviews">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.RecipeReview)">
+        <MappingFragment StoreEntitySet="RecipeReviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RecipeRating" ColumnName="RecipeRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecipeSteps">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.RecipeStep)">
+        <MappingFragment StoreEntitySet="RecipeSteps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StepTitle" ColumnName="StepTitle" />
+          <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredients1">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Ingredient)">
+        <MappingFragment StoreEntitySet="Ingredients1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IngredientDescription" ColumnName="IngredientDescription" />
+          <ScalarProperty Name="IngredientAmount" ColumnName="IngredientAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecipeIngredients">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.RecipeIngredients)">
+        <MappingFragment StoreEntitySet="RecipeIngredients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.PhLog)">
+        <MappingFragment StoreEntitySet="PhLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="phReading" ColumnName="phReading" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonComment" TypeName="Model1.PersonComment" StoreEntitySet="Comments">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonRecipe" TypeName="Model1.PersonRecipe" StoreEntitySet="Recipes">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Recipe">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CommentRecipeReview" TypeName="Model1.CommentRecipeReview" StoreEntitySet="RecipeReviews">
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Comment_Id" />
+      </EndProperty>
+      <EndProperty Name="RecipeReview">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RecipeRecipeReview" TypeName="Model1.RecipeRecipeReview" StoreEntitySet="RecipeReviews">
+      <EndProperty Name="Recipe">
+        <ScalarProperty Name="Id" ColumnName="Recipe_Id" />
+      </EndProperty>
+      <EndProperty Name="RecipeReview">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RecipeRecipeStep" TypeName="Model1.RecipeRecipeStep" StoreEntitySet="RecipeSteps">
+      <EndProperty Name="Recipe">
+        <ScalarProperty Name="Id" ColumnName="Recipe_Id" />
+      </EndProperty>
+      <EndProperty Name="RecipeStep">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UofMIngredient" TypeName="Model1.UofMIngredient" StoreEntitySet="Ingredients1">
+      <EndProperty Name="UofM">
+        <ScalarProperty Name="Id" ColumnName="UofM_Id" />
+      </EndProperty>
+      <EndProperty Name="Ingredient">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RecipeStepRecipeIngredients" TypeName="Model1.RecipeStepRecipeIngredients" StoreEntitySet="RecipeIngredients">
+      <EndProperty Name="RecipeStep">
+        <ScalarProperty Name="Id" ColumnName="RecipeStep_Id" />
+      </EndProperty>
+      <EndProperty Name="RecipeIngredients">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="IngredientRecipeIngredients" TypeName="Model1.IngredientRecipeIngredients" StoreEntitySet="RecipeIngredients">
+      <EndProperty Name="Ingredient">
+        <ScalarProperty Name="Id" ColumnName="Ingredient_Id" />
+      </EndProperty>
+      <EndProperty Name="RecipeIngredients">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RecipePhLog" TypeName="Model1.RecipePhLog" StoreEntitySet="PhLogs">
+      <EndProperty Name="Recipe">
+        <ScalarProperty Name="Id" ColumnName="Recipe_Id" />
+      </EndProperty>
+      <EndProperty Name="PhLog">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CommentPhLog" TypeName="Model1.CommentPhLog" StoreEntitySet="PhLogs">
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Comment_Id" />
+      </EndProperty>
+      <EndProperty Name="PhLog">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
