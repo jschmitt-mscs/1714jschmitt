@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="99ee6eb5c24848edba83250ab95e4c1b" Name="Diagram1" >
         <EntityTypeShape EntityType="PropertyManager2Model.Building" Width="1.5" PointX="1" PointY="0.875" />
-        <EntityTypeShape EntityType="PropertyManager2Model.Apartment" Width="1.5" PointX="3.875" PointY="1.125" />
+        <EntityTypeShape EntityType="PropertyManager2Model.Apartment" Width="1.5" PointX="3.875" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyManager2Model.Person" Width="1.5" PointX="6.875" PointY="1.125" />
         <AssociationConnector Association="PropertyManager2Model.BuildingApartment" />
         <AssociationConnector Association="PropertyManager2Model.TenantApartment" />

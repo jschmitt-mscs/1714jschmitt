@@ -21,7 +21,6 @@ namespace _1714jschmitt2g
         }
     
         public int Id { get; set; }
-        public short BuildingID { get; set; }
         public string ApartmentNum { get; set; }
         public short SquareFeet { get; set; }
         public short Bathrooms { get; set; }

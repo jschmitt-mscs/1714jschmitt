@@ -53,7 +53,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BuildingID" Type="smallint" Nullable="false" />
     <Property Name="ApartmentNum" Type="nvarchar" Nullable="false" MaxLength="5" />
     <Property Name="SquareFeet" Type="smallint" Nullable="false" />
     <Property Name="Bathrooms" Type="smallint" Nullable="false" />
@@ -69,8 +68,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
-    <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="LineItems">
     <Key>
@@ -224,7 +223,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BuildingID" Type="Int16" Nullable="false" />
           <Property Name="ApartmentNum" Type="String" Nullable="false" MaxLength="5" />
           <Property Name="SquareFeet" Type="Int16" Nullable="false" />
           <Property Name="Bathrooms" Type="Int16" Nullable="false" />
@@ -241,8 +239,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="15" />
-          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" />
           <NavigationProperty Name="Apartments" Relationship="PropertyManager2Model.TenantApartment" FromRole="Person" ToRole="Apartment" />
           <NavigationProperty Name="Apartments1" Relationship="PropertyManager2Model.AdminApartment" FromRole="Person" ToRole="Apartment" />
         </EntityType>
@@ -321,7 +319,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(PropertyManager2Model.Apartment)">
         <MappingFragment StoreEntitySet="Apartments">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
           <ScalarProperty Name="ApartmentNum" ColumnName="ApartmentNum" />
           <ScalarProperty Name="SquareFeet" ColumnName="SquareFeet" />
           <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
@@ -335,8 +332,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
